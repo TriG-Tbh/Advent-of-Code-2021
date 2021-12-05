@@ -3,7 +3,6 @@ import helper
 with open(helper.nrml("day4.txt")) as f:
     contents = f.read()
 
-import pprint
 
 # contents = open("day3.txt").read().split("\n")
 

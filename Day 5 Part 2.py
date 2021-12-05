@@ -2,6 +2,8 @@ import helper
 with open(helper.nrml("day5.txt")) as f:
     contents = f.read().split("\n")
 
+# contents = open("day5.txt").read().split("\n")
+
 contents = [x.split(" -> ") for x in contents]
 contents = [[tuple(map(int, y.split(","))) for y in z] for z in contents]
 
