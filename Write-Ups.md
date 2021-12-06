@@ -30,3 +30,9 @@ Day 5:
 - constantly got memoryerrors because there was just too much data
 - had to rewrite multiple times
 - ultimately reused part 1 solution for part 2 but slightly modified it
+
+Day 6:
+
+- way too easy
+- incredibly easier than days 4 and 5
+- i think i was just graced with the idea of using a dictionary as early as i did
