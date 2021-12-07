@@ -36,3 +36,11 @@ Day 6:
 - way too easy
 - incredibly easier than days 4 and 5
 - i think i was just graced with the idea of using a dictionary as early as i did
+
+Day 7:
+
+- lmao what was this
+- (i've been informed that weekend problems are made intentionally harder than weekday problems)
+- still this one was way too easy
+- a lot easier than day 6's
+- but **i've finally completed a whole week!**
