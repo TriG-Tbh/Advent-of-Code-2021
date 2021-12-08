@@ -3,13 +3,9 @@ import helper
 with open(helper.nrml("day8.txt")) as f:
     contents = f.read().split("\n")
 
-total = 0
+# contents = open("day8.txt").read().split("\n")
 
-def diffstr(s1, s2):
-    if len(s1) > len(s2):
-        return len([i for i in s1 if i not in s2])
-    else:
-        return len([i for i in s2 if i not in s1])
+total = 0
 
 index = 0
 for line in contents:
@@ -25,8 +21,7 @@ for line in contents:
             iindex = list(map(len, combo)).index(item)
             lengths[x[0]] = "".join(sorted(combo[iindex]))
     
-    # 1 -> "a", 2 -> "b", etc. as given in first display in problem
-    pairs[1] = [x for x in lengths[7] if x not in lengths[1]][0] # any character used in 1, not used in 7, must be top one
+    pairs[1] = [x for x in lengths[7] if x not in lengths[1]][0] 
 
     zero = [x for x in first.split(" ") if len(x) == 6]
     four = lengths[4]
@@ -34,20 +29,33 @@ for line in contents:
     diff = [x for x in four if x not in two]
     lengths[0] = [x for x in zero if sum([x.count(y) for y in diff]) < 2][0]
     pairs[4] = [x for x in lengths[4] if x not in lengths[0]][0]
-
     pairs[2] = [x for x in lengths[4] if x != pairs[4] and x not in lengths[1]][0]
-
-    six = [x for x in first.split(" ") if len(x) == 6]
     
-    lengths[6] = [x for x in six if not(lengths[1][0] in x and lengths[1][1] in x)][0]
-    lengths[9] = [x for x in six if x != lengths[6] and pairs[4] in x][0]
-    lengths[5] = [x for x in first.split(" ") if len(x) == 5 and pairs[2] in x][0]
+    threes = [x for x in first.split(" ") if len(x) == 5]
+   # print(threes)
+    lengths[3] = [x for x in threes if lengths[7][0] in x and lengths[7][1] in x and lengths[7][2] in x][0]
+    pairs[7] = [x for x in lengths[3] if x not in lengths[7] and x not in lengths[4]][0]
+    
+    lengths[5] = [x for x in threes if all([pairs[y] in x for y in [1,2, 4, 7]])][0]
 
-    pairs[6] = [x for x in lengths[5] if x in lengths[1]][0]
-    lengths[2] = [x for x in first.split(" ") if len(x) == 5 and pairs[6] not in x][0]
-    lengths = {k: "".join(sorted(v)) for k, v in lengths.items()}
-    lengths[3] = ["".join(sorted(x)) for x in first.split(" ") if "".join(sorted(x)) not in lengths][0]
-    lengths = {v: k for k, v in lengths.items()}
+    pairs[6] = [x for x in lengths[5] if x not in [pairs[y] for y in [1, 2, 4, 7]]][0]
+    
+    pairs[3] = [x for x in lengths[1] if x != pairs[6]][0]
+
+    pairs[5] = [x for x in lengths[8] if x not in pairs.values()][0]
+
+    lengths[0] = "".join([pairs[x] for x in [1, 2, 3, 5, 6, 7]])
+    lengths[1] = "".join([pairs[x] for x in [3, 6]])
+    lengths[2] = "".join([pairs[x] for x in [1, 3, 4, 5, 7]])
+    lengths[3] = "".join([pairs[x] for x in [1, 3, 4, 6, 7]])
+    lengths[4] = "".join([pairs[x] for x in [2, 3, 4, 6]])
+    lengths[5] = "".join([pairs[x] for x in [1, 2, 4, 6, 7]])
+    lengths[6] = "".join([pairs[x] for x in [1, 2, 4, 5, 6, 7]])
+    lengths[7] = "".join([pairs[x] for x in [1, 3, 6]])
+    lengths[8] = "".join([pairs[x] for x in [1, 2, 3, 4, 5, 6, 7]])
+    lengths[9] = "".join([pairs[x] for x in [1, 2, 3, 4, 6, 7]])
+
+    lengths = {"".join(sorted(v)): k for k, v in lengths.items()}
     t = 0
     for item in last.split(" "):
         item = "".join(sorted(item))

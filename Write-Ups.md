@@ -44,3 +44,10 @@ Day 7:
 - still this one was way too easy
 - a lot easier than day 6's
 - but **i've finally completed a whole week!**
+
+Day 8:
+
+- i like to call this one `"list comprehension ad nauseum"`
+- day 1 was really easy
+- day 2 was much more difficult but still fun
+- works by first attempting to solve for each individual segment, then building each digit from the segments it uses
