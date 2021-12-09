@@ -51,3 +51,10 @@ Day 8:
 - day 1 was really easy
 - day 2 was much more difficult but still fun
 - works by first attempting to solve for each individual segment, then building each digit from the segments it uses
+
+Day 9:
+
+- i was _going_ to complete it within an hour after it was released
+- but i couldn't figure out how to get the top 3 items in a list
+- (also the recursive branch function i had beforehand wasn't working)
+- so i implemented my own
