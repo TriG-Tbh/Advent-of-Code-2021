@@ -33,16 +33,4 @@ for item in contents:
                 summed += worth[c]
                 go = False
                 break
-    if go:
-        rev = [mapped[y] for y in x[::-1]]
-        
-        s = 0
-        for y in rev:
-            s = (s * 5) + {
-                    ")": 1,
-                    "]": 2,
-                    "}": 3,
-                    ">": 4
-                }[y]
-        inc.append(s)
-print(sorted(inc)[len(inc) // 2])
+print(summed)
