@@ -58,3 +58,10 @@ Day 9:
 - but i couldn't figure out how to get the top 3 items in a list
 - (also the recursive branch function i had beforehand wasn't working)
 - so i implemented my own
+
+Day 10:
+
+- **10 DAYS LETS GO**
+- also really easy
+- finished in 11 minutes
+- so i finally achieved my goal of completing a day in the first hour it was given
