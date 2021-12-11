@@ -65,3 +65,9 @@ Day 10:
 - also really easy
 - finished in 11 minutes
 - so i finally achieved my goal of completing a day in the first hour it was given
+
+Day 11:
+
+- day 2 was super easy
+- just had to add an extra variable and change some stuff
+- recurring theme is "it doesn't look pretty but it works"
