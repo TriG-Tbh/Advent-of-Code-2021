@@ -71,3 +71,11 @@ Day 11:
 - day 2 was super easy
 - just had to add an extra variable and change some stuff
 - recurring theme is "it doesn't look pretty but it works"
+
+Day 12:
+
+- pretty easy
+- see i hate pathfinding algorithms so i thought today was going to be absolute hell
+- but then i gave it a shot and it turned out pretty well
+- (runs a bit slowly)
+- **reached 12 days of completely vanilla solutions**
