@@ -35,6 +35,8 @@ def explode(point):
 
 i = 0
 import os
+flattened = [x for line in arr for x in line]
+
 while True:
     p = 0
     os.system("cls")
@@ -51,7 +53,19 @@ while True:
     
     if arr[py][px] == "9":
         explode((py, px))
-    arr[py][px] = "X"
-    pprint.pprint(arr)
-    print(py, px)
-    input()
+    val = arr[py][px]
+    
+    if val == "6" or val == "0":
+        flattened = [x for line in arr for x in line]
+        if flattened.count(val) > 1:
+
+            arr[py][px] = "X"
+    copy = [x for line in arr for x in line]
+    if copy == flattened:
+        break
+    
+for y in range(len(arr):
+    y = height - y - 1
+    for x in len(arr[0]):
+        x = length - x - 1
+        print(y, x)
