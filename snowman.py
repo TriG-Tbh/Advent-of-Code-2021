@@ -2,7 +2,7 @@
 # snowman(n, arr)
 def snowman(n: int, arr: list) -> tuple:
     """
-    A function that (I think) passes the challenge
+    A function that passes the Christmas challenge
 
     Parameters
     ---
@@ -17,16 +17,13 @@ def snowman(n: int, arr: list) -> tuple:
                     or
                         Each line of the grid in its own list
                         [[str], [str], [str], ...]
-
     Returns
     ---
-    return (tuple): Tuple containing the points of the snowman and Santa 
+    return (tuple): Tuple containing the points of the snowman and Santa
                     (will give None as a point if the entity not found)
-
     Example Usage
     ---
     snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> ((0, 6), (2, 9))
-
     """
     if isinstance(arr[0][0], int):
         arr = [[str(x) for x in line] for line in arr]
@@ -56,41 +53,43 @@ def snowman(n: int, arr: list) -> tuple:
         arr[y][x] = "X"
         for p in valid2:
             py, px = p
+            flattened = [x for line in arr for x in line]
             if arr[py][px] == "9":
                 explode(p)
-            arr[py][px] = "X"
+            else:
+                if flattened.count(arr[py][px]) > 1:
+                    arr[py][px] = "X"
+                    flattened = [x for line in arr for x in line]
 
     i = 0
-    import os
     flattened = [x for line in arr for x in line]
 
-    
+
     while True:
         p = 0
         while p < n:
             px = i % length
             py = i // length
             i += 1
-            try:
-                if arr[py][px] != "X":
-                    p += 1
-            except IndexError:
+            if i >= (length * height):
                 i -= (length * height) + 1
                 continue
-        
+            if arr[py][px] != "X":
+                p += 1
+
+
         if arr[py][px] == "9":
             explode((py, px))
         val = arr[py][px]
-        
+
         if val == "6" or val == "0":
             flattened = [x for line in arr for x in line]
             if flattened.count(val) > 1:
-
                 arr[py][px] = "X"
         copy = [x for line in arr for x in line]
         if copy == flattened:
             break
-        
+
     flattened = [x for line in arr for x in line]
     for item in ["0", "6"]:
         while flattened.count(item) > 1:
@@ -113,20 +112,15 @@ def snowman(n: int, arr: list) -> tuple:
 
     inside = []
     flattened = [x for line in arr for x in line]
-    if "0" not in flattened:
-        inside.append(None)
-    if "6" not in flattened:
-        inside.append(None)
 
     for item in ["0", "6"]:
-        try:
-            i = flattened.index(item)
-        except ValueError:
+        if item not in flattened:
             inside.append(None)
-        else:
-            px = i % length
-            py = i // length
-            inside.append((py, px))
+            continue
+        i = flattened.index(item)
+        px = i % length
+        py = i // length
+        inside.append((py, px))
 
     """for y in range(len(arr)):
         for x in range(len(arr[0])):
@@ -134,7 +128,7 @@ def snowman(n: int, arr: list) -> tuple:
                 inside.append((y, x))"""
 
 
-    
+
     inside = tuple(inside)
     return inside
 
