@@ -79,3 +79,16 @@ Day 12:
 - but then i gave it a shot and it turned out pretty well
 - (runs a bit slowly)
 - **reached 12 days of completely vanilla solutions**
+
+Day 13:
+
+- was somewhat difficult as the phrase `The manual says the code is always eight capital letters.` was hard to understand
+- still managed to finish
+
+BONUS:
+
+- i got a bonus challenge as part of a competition for discord nitro/$100 steam credit
+- so i decided to do it
+- i included it here because it's somewhat similar
+- (i think i was the first person to finish)
+- will optimize later
