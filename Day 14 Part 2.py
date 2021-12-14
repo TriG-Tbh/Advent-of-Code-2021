@@ -21,22 +21,37 @@ for r in rules:
     pairs[new + tor[1]] = initial.count(new + tor[1])
     pairs[tor] = initial.count(tor)
 
+def addto(d, key, value):
+    if key not in d.keys():
+        d[key] = 0
+    d[key] += value
+    return d
 
-for _ in range(2):
+for _ in range(40):
     for r in rules:
         tor, new = r.split(" -> ")
         x, y = (z for z in tor)
-        pairs[x + new.lower()] = pairs[tor]
-        pairs[new.lower() + y] = pairs[tor]
+        
+        pairs = addto(pairs, x + new.lower(), pairs[tor])
+        
+        pairs = addto(pairs, new.lower() + y, pairs[tor])
+        
+        
         singles[new.upper()] += pairs[tor]
+        
+        
         pairs[tor] = 0
-    print({k: v for k, v in pairs.items() if v > 0})
+        
+        
+    #print({k: v for k, v in pairs.items() if v > 0})
+    
     for item in pairs.keys():
         test = item.upper()
         if test != item:
             pairs[test] += pairs[item]
             pairs[item] = 0
-    print({k: v for k, v in pairs.items() if v > 0})
+    #print({k: v for k, v in pairs.items() if v > 0})
+    #input()
     #print(pairs)
     
 letters = singles
