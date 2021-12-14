@@ -38,14 +38,7 @@ def snowman(n: int, arr: list) -> tuple:
 
     def validate(point):
         y, x = point
-        if y < 0:
-            return False
-        if x < 0:
-            return False
-        if x >= len(arr[0]):
-            return False
-        if y >= len(arr):
-            return False
+        return (0 <= y < len(arr)) and (0 <= x < len(arr[0]))
         return True
 
     def explode(point):
@@ -66,7 +59,7 @@ def snowman(n: int, arr: list) -> tuple:
                     flattened = [x for line in arr for x in line]
 
     i = 0
-    flattened = [x for line in arr for x in line]
+    flattened = [x for line in arr for x in line] # removing this line causes runtime spike by 2+ seconds idk why or how
     temp = []
 
     while True:
