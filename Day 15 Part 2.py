@@ -5,11 +5,6 @@ from queue import PriorityQueue
 with open(helper.nrml("day15.txt")) as f:
     contents = f.read().splitlines()
 
-nodes = []
-
-for y in range(len(contents)):
-    for x in range(len(contents[0])):
-        nodes.append((y, x))
 
 def validate(point):
     y, x = point
@@ -26,6 +21,29 @@ def reconstruct(camefrom, current):
 def h(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] + p2[1])
 
+def groupadd(line):
+    l = [int(x) + 1 for x in line]
+    l = [(1 if x > 9 else x) for x in l]
+    return "".join(map(str, l))
+
+
+new = [contents]
+for i in range(4):
+    new.append([groupadd(line) for line in new[i]])
+
+seg = ["".join([new[i][x] for i in range(len(new))]) for x in range(len(contents))]
+for i in range(len(seg * 4)):
+    seg.append(groupadd(seg[i]))
+
+contents = seg
+
+nodes = []
+
+for y in range(len(contents)):
+    for x in range(len(contents[0])):
+        nodes.append((y, x))
+
+
 def astar(start, goal, h):
     count = 0
     open_set = PriorityQueue()
@@ -41,8 +59,11 @@ def astar(start, goal, h):
 
     while not open_set.empty():
 
+        f = open_set.get()
+        current = f[2]
+        print(f)
+        input()
 
-        current = open_set.get()[2]
         open_set_hash.remove(current)
 
         if current == goal:
@@ -62,7 +83,6 @@ def astar(start, goal, h):
                 if neighbor not in open_set_hash:
                     count += 1
                     open_set.put((f_score[neighbor], count, neighbor))
-                    
                     open_set_hash.add(neighbor)
 
     return False

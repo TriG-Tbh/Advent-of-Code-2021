@@ -92,3 +92,17 @@ BONUS:
 - i included it here because it's somewhat similar
 - (i think i was the first person to finish)
 - will optimize later
+
+Day 14:
+
+- hell
+- on earth
+- part 1 was fine but part 2 was awful
+
+Day 15:
+
+- well
+- i hate to say it
+- but i've officially conceded the full vanilla challenge
+- there's no easy way to make a priority queue without using `queue.PriorityQueue`
+- `Day 15 Part 2 Vanilla.py` has an implementation written without `queue.PriorityQueue`, it just doesn't run in reasonable time
