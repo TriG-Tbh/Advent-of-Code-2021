@@ -3,50 +3,36 @@ import helper
 with open(helper.nrml("day15.txt")) as f:
     contents = f.read().splitlines()
 
-included = {}
+nodes = []
 
-def validate(point, path):
+def validate(point):
     y, x = point
-    return (0 <= y < len(contents)) and (0 <= x < len(contents[0])) and (point not in path)
-
+    return (0 <= y < len(contents)) and (0 <= x < len(contents[0])) and point in distances
 
 
 distances = {}
 for y in range(len(contents)):
     for x in range(len(contents[0])):
-        if y == x == 0:
-            distances[(y, x)] = 0
-        else:
-            distances[(y, x)] = 999999999999999999
+        nodes.append((y, x))
+        valid = list(filter(validate, [(y - 1, x), (y, x + 1), (y + 1, x), (y, x - 1)]))
+        distances[(y, x)] = {(py, px): int(contents[py][px]) for (py, px) in valid}
 
-cd = 0
-current = ()
+unvisited = {node: None for node in nodes} #using None as +inf
+visited = {}
+current = (0, 0)
+currentDistance = 0
+unvisited[current] = currentDistance
 
-def validate(point):
-    y, x = point
-    return (0 <= y < len(contents)) and (0 <= x < len(contents[0])) and point in unvisited
-
-while (len(contents) - 1, len(contents[0]) - 1) in unvisited:
-
-    y, x = current
-    valid = list(filter(validate, [(y - 1, x), (y, x + 1), (y + 1, x), (y, x - 1)]))
-    point_distance = {}
-    for p in valid:
-        py, px = p
-        newd = distances[current] + int(contents[py][px])
-        if newd < distances[p]:
-            distances[p] = newd
-        point_distance[p] = distances[p]
-    
-    points = list(point_distance.keys())
-    points.sort(key=lambda x: point_distance[x])
+while True:
+    for neighbour, distance in distances[current].items():
+        if neighbour not in unvisited: continue
+        newDistance = currentDistance + distance
+        if unvisited[neighbour] is None or unvisited[neighbour] > newDistance:
+            unvisited[neighbour] = newDistance
+    visited[current] = currentDistance
     del unvisited[current]
-    #print(points)
-    if not unvisited:
-        break
-    current = points[0]
+    if not unvisited: break
+    candidates = [node for node in unvisited.items() if node[1]]
+    current, currentDistance = sorted(candidates, key = lambda x: x[1])[0]
 
-
-        
-
-print(included)
+print(visited)
