@@ -29,8 +29,7 @@ def snowman(n: int, arr: list) -> tuple:
     """
     if isinstance(arr[0][0], int):
         arr = [[str(x) for x in line] for line in arr]
-
-    if len(arr[0]) == 1:
+    elif len(arr[0]) == 1:
         arr = [[x for x in str(line[0])] for line in arr]
 
     length = len(arr[0])
@@ -38,8 +37,7 @@ def snowman(n: int, arr: list) -> tuple:
 
     def validate(point):
         y, x = point
-        return (0 <= y < len(arr)) and (0 <= x < len(arr[0]))
-        return True
+        return (0 <= y < height) and (0 <= x < length)
 
     def explode(point):
         y, x = point
@@ -53,23 +51,25 @@ def snowman(n: int, arr: list) -> tuple:
             if val == "9":
                 explode(p)
                 flattened = [x for line in arr for x in line]
-            else:
-                if flattened.count(val) > 1:
-                    arr[py][px] = "X"
-                    flattened = [x for line in arr for x in line]
+                continue
+            if flattened.count(val) > 1:
+                arr[py][px] = "X"
+        flattened = [x for line in arr for x in line]
+        valid2 = []
 
     i = 0
     flattened = [x for line in arr for x in line] # removing this line causes runtime spike by 2+ seconds idk why or how
-    temp = []
 
+    size = length * height
     while True:
         p = 0
         while p < n:
             px = i % length
             py = i // length
             i += 1
-            if i >= (length * height):
-                i -= (length * height) + 1
+            
+            if i >= size:
+                i -= size + 1
                 continue
             if arr[py][px] != "X":
                 p += 1
@@ -77,36 +77,23 @@ def snowman(n: int, arr: list) -> tuple:
         val = arr[py][px]
         if val == "9":
             explode((py, px))
-        
-        go = False
-        if val == "6" or val == "0":
+        else:
             flattened = [x for line in arr for x in line]
             if flattened.count(val) > 1:
                 arr[py][px] = "X"
             else:
-                go = True
                 break
+    
+    arr = []
 
     for item in ["0", "6"]:
         while flattened.count(item) > 1:
-            i = flattened[::-1].index(item)
-            i = (len(flattened) - 1 - i)
-            arr[i // length][i % length] = "X"
-            flattened = [x for line in arr for x in line]
+            i = "".join(flattened).rindex(item)
+            #i = (len(flattened) - 1 - i)
+            #arr[i // length][i % length] = "X"
+            flattened[i] = "X"
 
-    
-
-    inside = []
-
-    for item in ["0", "6"]:
-        if item not in flattened:
-            inside.append(None)
-            continue
-        i = flattened.index(item)
-        inside.append((i // length, i % length))
-
-
-
-    inside = tuple(inside)
+    inside = tuple((flattened.index(item) // length, flattened.index(item) % length) if item in flattened else None for item in ["0", "6"])
+    # tuple comprehension for the win lmao
     return inside
 
