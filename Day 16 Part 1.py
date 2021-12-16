@@ -7,22 +7,23 @@ mapped = {'0': "0000", '1': "0001", '2': "0010", '3': "0011", '4': "0100", '5': 
 new = ""
 for item in contents:
     new += mapped[item]
-
 versions = []
-while new != "":
 
+
+def parse(new, vids, versions):
+    print(new)
     lenbits = 0
     lenhex = 0
-
+    startlen = len(new)
     version = int(new[:3], 2)
-    new = new[3:]
     versions.append(version)
+    new = new[3:]
     
-    lenbits += 3
+    
+    
 
     typeid = int(new[:3], 2)
     new = new[3:]
-    lenbits += 3
     
     if typeid == 4:
         ppart = "1xxxx"
@@ -37,19 +38,41 @@ while new != "":
         new = new[5:]
         lenbits += 5
 
-        new = new[(4 - lenbits % 4):]
+        
     else:
         ltid = new[:1]
         new = new[1:]
 
         lenbits += 1
         length = ""
-        if ltid == "1":
-            length = new[:15]
+        #print(ltid)
+        print(ltid)
+        if ltid == "0":
+            length = int(new[:15], 2)
             new = new[15:]
-            lenbits += 15
+            parse(new[:length], [], versions)
+            new = new[length:]
         else:
-            length = new[:11]
+            length = int(new[:11], 2)
             new = new[11:]
-            lenbits += 11
-        
+            bp = []
+            while len(bp) < length:
+                print(" " + new)
+                new = parse(new, bp, versions)
+                #print(len(bp))
+            forward = sum([x[1] for x in bp])
+            print(forward)
+            versions = versions + [x[0] for x in bp]
+            new = new[length:]
+
+    endlen = len(new)
+    
+    new = new[(4 - (startlen - endlen) % 4):]
+    vids.append((version, (startlen - endlen)))
+    return new
+
+tempstorage = []
+
+parse(new, tempstorage, versions)
+print(versions)
+#print(sum(versions))
