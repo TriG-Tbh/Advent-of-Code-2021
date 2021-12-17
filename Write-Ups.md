@@ -113,3 +113,11 @@ Day 16:
 - today i have created the first **bad** solution of the year
 - and it only took 11 hours, 5+ people and a third-party decoder/interpreter
 - god i hate opcode
+
+Day 17:
+
+- by some miracle
+- brute forcing worked
+- and [the math](https://www.reddit.com/r/adventofcode/comments/rid2jc/2021_day_17pencil_my_best_visualisation_so_far_i/) looked way too complex for me
+- because im not in physics
+- so i resorted to brute forcing, because why not
