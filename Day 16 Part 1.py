@@ -4,75 +4,96 @@ with open(helper.nrml("day16.txt")) as f:
 
 mapped = {'0': "0000", '1': "0001", '2': "0010", '3': "0011", '4': "0100", '5': "0101", '6': "0110", '7': "0111", '8': "1000", '9': "1001",  'A': "1010", 'B': "1011", 'C': "1100", 'D': "1101", 'E': "1110", 'F': "1111"}
 
-new = ""
-for item in contents:
-    new += mapped[item]
+
+
+def convert(fromstr):
+    new = ""
+    for item in fromstr:
+        new += mapped[item]
+    return new
 versions = []
 
+new = convert(contents)
+with open(helper.nrml("total.txt"), 'w') as f:
+    f.write(new)
 
-def parse(new, vids, versions):
-    print(new)
-    lenbits = 0
-    lenhex = 0
-    startlen = len(new)
-    version = int(new[:3], 2)
-    versions.append(version)
-    new = new[3:]
-    
-    
-    
-
-    typeid = int(new[:3], 2)
-    new = new[3:]
-    
-    if typeid == 4:
-        ppart = "1xxxx"
-        total = ""
-        while ppart[0] == "1":
-            ppart = new[:5]
-            total = total + ppart
-            new = new[5:]
-            lenbits += 5
-        ppart = new[:5]
-        total = total + ppart
-        new = new[5:]
-        lenbits += 5
-
-        
+def operator(new, I, ignore=False):
+    if I == "0":
+        #print(new[7:22])
+        L = int(new[7:22], 2)
+        if not ignore:
+            new = new[:-2]
+        container = new[22:(22+L)]
+        while len(container) > 0:
+            container = parse(container, ignore=True)
+        new = new[(22+L):]
     else:
-        ltid = new[:1]
-        new = new[1:]
-
-        lenbits += 1
-        length = ""
-        #print(ltid)
-        print(ltid)
-        if ltid == "0":
-            length = int(new[:15], 2)
-            new = new[15:]
-            parse(new[:length], [], versions)
-            new = new[length:]
+        L = int(new[7:18])
+        if ignore:
+            new = new[18:]
         else:
-            length = int(new[:11], 2)
-            new = new[11:]
-            bp = []
-            while len(bp) < length:
-                print(" " + new)
-                new = parse(new, bp, versions)
-                #print(len(bp))
-            forward = sum([x[1] for x in bp])
-            print(forward)
-            versions = versions + [x[0] for x in bp]
-            new = new[length:]
-
-    endlen = len(new)
-    
-    new = new[(4 - (startlen - endlen) % 4):]
-    vids.append((version, (startlen - endlen)))
+            new = new[18:-2]
+        for _ in range(L):
+            new = parse(new, ignore=True)
     return new
 
-tempstorage = []
+def value(new, ignore=False):
+    index = 6
+    while new[index] == "1":
+        value = new[index:index+5]
+        index += 5
+    value = new[index:index+5]
+    index += 5
+    if not ignore:
+        padding = 4 - (index % 4)
+        index = index + padding
+    return new[index:]
 
-parse(new, tempstorage, versions)
-print(versions)
+
+def parse(new, depth, ignore=False):
+    #print(new)
+    if new == "":
+        return ""
+    if len(new) < 11:
+        return ""
+    V = int(new[0:3], 2)
+    T = int(new[3:6], 2)
+    versions.append(V)
+    if T == 4:
+        index = 6
+        while new[index] == "1":
+            value = new[index:index+5]
+            index += 5
+        value = new[index:index+5]
+        index += 5
+        if depth == 0:
+            padding = 4 - (index % 4)
+            index = index + padding
+        new = new[index:]
+        #print(depth)
+    else:
+        I = new[6]
+        if I == "0":
+            L = int(new[7:22], 2)
+            if depth == 0:
+                new = new[:-2]
+            container = new[22:(22+L)]
+            while len(container) > 0:
+                container = parse(container, depth+1, ignore=True)
+            new = new[(22+L):]
+        else:
+            L = int(new[7:18])
+            if depth != 0:
+                new = new[18:]
+            else:
+                new = new[18:-2]
+            for _ in range(L):
+                new = parse(new, depth+1, ignore=True)
+
+    return new
+
+#new = convert("8A004A801A8002F478")
+parse(new, 0)
+#value(convert("D2FE28"))
+print(sum(versions))
 #print(sum(versions))

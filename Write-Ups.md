@@ -106,3 +106,10 @@ Day 15:
 - but i've officially conceded the full vanilla challenge
 - there's no easy way to make a priority queue without using `queue.PriorityQueue`
 - `Day 15 Part 2 Vanilla.py` has an implementation written without `queue.PriorityQueue`, it just doesn't run in reasonable time
+
+Day 16:
+
+- before today, i'd consider some of the solutions i've made this year unnecessarily complicated and overengineered, but not bad
+- today i have created the first **bad** solution of the year
+- and it only took 11 hours, 5+ people and a third-party decoder/interpreter
+- god i hate opcode
