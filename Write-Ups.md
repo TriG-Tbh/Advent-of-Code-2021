@@ -121,3 +121,10 @@ Day 17:
 - and [the math](https://www.reddit.com/r/adventofcode/comments/rid2jc/2021_day_17pencil_my_best_visualisation_so_far_i/) looked way too complex for me
 - because im not in physics
 - so i resorted to brute forcing, because why not
+
+Day 18:
+
+- either i'm a genius
+- or i'm completely crazy
+- every snailfish is parsed as a string rather than nested lists
+- and by some miracle part 2 runs in a minute
