@@ -1,7 +1,7 @@
 import runner, helper
 import snowman
 import os, shutil
-os.system("cls")
+os.system("clear")
 
 shutil.rmtree(helper.nrml("__pycache__"))
 @runner.test(return_val=((0, 6), (2, 9)))
