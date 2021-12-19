@@ -128,3 +128,9 @@ Day 18:
 - or i'm completely crazy
 - every snailfish is parsed as a string rather than nested lists
 - and by some miracle part 2 runs in a minute
+
+Day 19:
+
+- so these last few days i've been abusing the soft time limits
+- this one runs in about 3 minutes
+- and i somehow managed to complete it without using numpy
