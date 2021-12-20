@@ -134,3 +134,9 @@ Day 19:
 - so these last few days i've been abusing the soft time limits
 - this one runs in about 3 minutes
 - and i somehow managed to complete it without using numpy
+
+Day 20:
+
+- today took way too long
+- 5 hours to complete, 15-20 minutes to run each file
+- due to a difference between the sample and puzzle inputs, today's files are split up into sample-compatible files and puzzle-compatible files
