@@ -2,7 +2,6 @@ import helper
 with open(helper.nrml("day21.txt")) as f:
     contents = f.read().splitlines()
 
-import functools
 
 pos = list(map(int, [l.split(": ")[1] for l in contents]))
 pos = [p-1 for p in pos]
