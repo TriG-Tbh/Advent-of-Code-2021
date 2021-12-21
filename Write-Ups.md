@@ -85,14 +85,6 @@ Day 13:
 - was somewhat difficult as the phrase `The manual says the code is always eight capital letters.` was hard to understand
 - still managed to finish
 
-BONUS:
-
-- i got a bonus challenge as part of a competition for discord nitro/$100 steam credit
-- so i decided to do it
-- i included it here because it's somewhat similar
-- (i think i was the first person to finish)
-- will optimize later
-
 Day 14:
 
 - hell
@@ -101,11 +93,13 @@ Day 14:
 
 Day 15:
 
-- well
-- i hate to say it
-- but i've officially conceded the full vanilla challenge
-- there's no easy way to make a priority queue without using `queue.PriorityQueue`
-- `Day 15 Part 2 Vanilla.py` has an implementation written without `queue.PriorityQueue`, it just doesn't run in reasonable time
+- ~~well~~
+- ~~i hate to say it~~
+- ~~but i've officially conceded the full vanilla challenge~~
+- ~~there's no easy way to make a priority queue without using `queue.PriorityQueue`~~
+- ~~`Day 15 Part 2 Vanilla.py` has an implementation written without `queue.PriorityQueue`, it just doesn't run in reasonable time~~
+- UPDATE (12/20): thanks to the amazing xelf over at pydis, this **can** be done in a reasonable time completely vanilla by using dijkstra instead of a\*
+- it takes an extremely long time to finish, but it can finish in time
 
 Day 16:
 
@@ -140,3 +134,11 @@ Day 20:
 - today took way too long
 - 5 hours to complete, 15-20 minutes to run each file
 - due to a difference between the sample and puzzle inputs, today's files are split up into sample-compatible files and puzzle-compatible files
+
+BONUS:
+
+- on 12/13 i got a bonus challenge as part of a competition for discord nitro/$100 steam credit
+- so i decided to do it
+- i included it here because it's somewhat similar
+- (i think i was the first person to finish)
+- between 12/13 and 12/20 i optimized it so much that i managed to cut down its execution time down to 16.5% of what it was originally

@@ -27,7 +27,6 @@ Example Usage
 ---
 snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> ((0, 6), (2, 9))
     """
-    #global flattened
     if isinstance(arr[0][0], int):
         flattened = [str(x) for line in arr for x in line]
         length = len(arr[0])
@@ -44,13 +43,12 @@ snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> 
     arr = []
 
     def explode(point):
-        #global flattened
         y, x = point
         
-        valid2 = list(filter(lambda newpoint: (0 <= newpoint[0] < height) and (0 <= newpoint[1] < length), [(y - 1, x), (y, x + 1), (y + 1, x), (y, x - 1)]))
-        flattened[(point[0] * length) + point[1]] = "X"
+        valid2 = [(ny, nx) for (ny, nx) in [(y - 1, x), (y, x + 1), (y + 1, x), (y, x - 1)] if (0 <= ny < height) and (0 <= nx < length)]
+        flattened[(y * length) + x] = "X"
         for p in valid2:
-            index = p[0] * length + p[1]
+            index = (p[0] * length) + p[1]
             val = flattened[index]
             if val == "9":
                 explode(p)
@@ -65,7 +63,9 @@ snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> 
     while True:
         p = 0
         while p < n:
-            if i >= size: i -= size + 1; continue
+            if i == size: 
+                i -= size + 1
+                continue
             if flattened[i] != "X":
                 p += 1
             if p < n:

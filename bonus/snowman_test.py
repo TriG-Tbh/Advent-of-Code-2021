@@ -1,9 +1,10 @@
-import runner, helper
+import runner
 import snowman
 import os, shutil
 os.system("clear")
 
-shutil.rmtree(helper.nrml("__pycache__"))
+base = os.path.dirname(os.path.realpath(__file__))
+shutil.rmtree(os.path.join(base, "__pycache__"))
 @runner.test(return_val=((0, 6), (2, 9)))
 def test_int_char_1():
     return snowman.snowman(3, [[0, 0, 0, 6, 0, 6, 0, 0, 6, 6], [6, 9, 0, 0, 6, 9, 6, 6, 0, 0], [0, 0, 0, 0, 9, 9, 0, 0, 0, 6], [6, 0, 6, 0, 9, 0, 6, 6, 0, 6]])
