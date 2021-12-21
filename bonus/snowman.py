@@ -1,5 +1,7 @@
 # Run as:
 # snowman(n, arr)
+import functools
+
 def snowman(n: int, arr: list) -> tuple:
     """
 A function that passes the Christmas challenge
@@ -42,6 +44,7 @@ snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> 
 
     arr = []
 
+    @functools.lru_cache(maxsize=None)
     def explode(point):
         y, x = point
         

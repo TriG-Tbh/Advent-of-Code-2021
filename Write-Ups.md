@@ -98,7 +98,7 @@ Day 15:
 - ~~but i've officially conceded the full vanilla challenge~~
 - ~~there's no easy way to make a priority queue without using `queue.PriorityQueue`~~
 - ~~`Day 15 Part 2 Vanilla.py` has an implementation written without `queue.PriorityQueue`, it just doesn't run in reasonable time~~
-- UPDATE (12/20): thanks to the amazing xelf over at pydis, this **can** be done in a reasonable time completely vanilla by using dijkstra instead of a\*
+- **UPDATE (12/20)**: thanks to the amazing xelf over at pydis, this **can** be done in a reasonable time completely vanilla by using dijkstra instead of a\*
 - it takes an extremely long time to finish, but it can finish in time
 
 Day 16:
@@ -134,6 +134,12 @@ Day 20:
 - today took way too long
 - 5 hours to complete, 15-20 minutes to run each file
 - due to a difference between the sample and puzzle inputs, today's files are split up into sample-compatible files and puzzle-compatible files
+
+Day 21:
+
+- giant shoutout to mustafa at pydis for optimizing this
+- this one was dumb, confusing, and nearly crashed my system 3 times
+- part 2 was significantly harder than part 1
 
 BONUS:
 
