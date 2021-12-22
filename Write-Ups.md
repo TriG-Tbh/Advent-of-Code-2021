@@ -141,6 +141,15 @@ Day 21:
 - this one was dumb, confusing, and nearly crashed my system 3 times
 - part 2 was significantly harder than part 1
 
+Day 22:
+
+- this is probably the first day that i am completely unsatisfied with my answer
+- part 2 was so difficult to understand that i had to look at someone else's answer to understand it
+- and only after completing the problem and looking at their answer multiple times over did i truly understand it
+- but i'm not a fan of having to use someone else's solution to understand the problem
+- it feels like cheating, kinda
+- but now i understand the problem, i know what it was asking for, and i know how to implement a solution (or similar solutions in the future)
+
 BONUS:
 
 - on 12/13 i got a bonus challenge as part of a competition for discord nitro/$100 steam credit
