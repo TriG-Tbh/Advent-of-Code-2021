@@ -44,11 +44,11 @@ snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> 
 
     arr = []
 
-    @functools.lru_cache(maxsize=None)
+    
     def explode(point):
         y, x = point
         
-        valid2 = [(ny, nx) for (ny, nx) in [(y - 1, x), (y, x + 1), (y + 1, x), (y, x - 1)] if (0 <= ny < height) and (0 <= nx < length)]
+        valid2 = filter(lambda x: (0 <= x[0] < height) and (0 <= x[1] < length), [(y - 1, x), (y, x + 1), (y + 1, x), (y, x - 1)])
         flattened[(y * length) + x] = "X"
         for p in valid2:
             index = (p[0] * length) + p[1]
