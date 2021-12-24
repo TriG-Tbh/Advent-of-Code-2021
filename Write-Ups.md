@@ -163,6 +163,14 @@ Day 23:
 - now i'm better prepared for future problems
 - perhaps the dissatisfaction stems from stubbornness? that i couldn't complete a day 100% on my own
 
+Day 24:
+
+- once again, thank you [mustafa](https://github.com/mustafaquraish) for making this 100 times easier to understand
+- today i've learned that i can understand logic better if it's written in (roughly) the same style as python code
+- i've also learned that these hard problems can be interpreted better by just manually taking an input and going through all the required steps
+- now that i think about it, something similar could (or should) have been done with day 20
+- but after 24 days, i've finally made it
+
 BONUS:
 
 - on 12/13 i got a bonus challenge as part of a competition for discord nitro/$100 steam credit
