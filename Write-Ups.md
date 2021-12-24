@@ -99,7 +99,7 @@ Day 15:
 - ~~there's no easy way to make a priority queue without using `queue.PriorityQueue`~~
 - ~~`Day 15 Part 2 Vanilla.py` has an implementation written without `queue.PriorityQueue`, it just doesn't run in reasonable time~~
 - **UPDATE (12/20)**: thanks to the amazing xelf over at pydis, this **can** be done in a reasonable time completely vanilla by using dijkstra instead of a\*
-- it takes an extremely long time to finish, but it can finish in time
+- it takes an extremely long time to finish (2 hours 44 minutes 18 seconds to be exact), but it can finish in time
 
 Day 16:
 
@@ -149,6 +149,19 @@ Day 22:
 - but i'm not a fan of having to use someone else's solution to understand the problem
 - it feels like cheating, kinda
 - but now i understand the problem, i know what it was asking for, and i know how to implement a solution (or similar solutions in the future)
+
+Day 23:
+
+- oops! no code
+- today's parts were done almost entirely by hand, with the help of someone else's solution to give the first few steps needed to solve part 2
+- one thing that was made extremely apparent today is that in a lot of instances, i just need a bit of a nudge to start the process to get to the final answer
+- and often i'm missing that initial push because i chose to make this year harder for myself than it should be (full vanilla, 24 hour completion time)
+- as i'm missing available resources + setting a relatively short time limit, which increase stress
+- something that i'm going to do _next_ year is not apply these extreme constraints for myself, because they end up causing me to fail
+- in the same vein as day 22, i'm a little unsatisfied that i had to look at someone else's answer to understand their thinking
+- but after implementing it myself, i was able to understand the problem better
+- now i'm better prepared for future problems
+- perhaps the dissatisfaction stems from stubbornness? that i couldn't complete a day 100% on my own
 
 BONUS:
 
