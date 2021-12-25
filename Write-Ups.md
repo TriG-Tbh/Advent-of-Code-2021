@@ -171,6 +171,12 @@ Day 24:
 - now that i think about it, something similar could (or should) have been done with day 20
 - but after 24 days, i've finally made it
 
+Day 25:
+
+- after 25 days, i've finally made it to the end
+- an entire advent calendar has been completed
+- **_at last, i'm free_**
+
 BONUS:
 
 - on 12/13 i got a bonus challenge as part of a competition for discord nitro/$100 steam credit
