@@ -83,7 +83,7 @@ def parse(new, depth, execution, ignore=False):
     else:
         I = new[6]
 
-        ftype = {0: "addi", 1: "prod", 2: "mini", 3: "maxi", 5: "grea", 6: "less", 7: "equa"}[T]
+        ftype = {0: "sum", 1: "prod", 2: "min", 3: "max", 5: "grea", 6: "less", 7: "equa"}[T]
 
         execution.append("" + ftype + "([")
 
@@ -107,4 +107,5 @@ def parse(new, depth, execution, ignore=False):
 # new = convert("A0016C880162017C3686B18A3D4780")
 parse(new, 0, execution)
 created = "(" + "".join(execution).rstrip(",").replace(",]", "]").replace(",", ", ") + ")"
+print(created)
 print(eval(created))
