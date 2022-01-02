@@ -1,6 +1,6 @@
 # Run as:
 # snowman(n, arr)
-import functools
+import numpy as np # unexpected rapid increase???
 
 def snowman(n: int, arr: list) -> tuple:
     """
@@ -30,15 +30,15 @@ Example Usage
 snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> ((0, 6), (2, 9))
     """
     if isinstance(arr[0][0], int):
-        flattened = [str(x) for line in arr for x in line]
+        flattened = np.array([str(x) for line in arr for x in line])
         length = len(arr[0])
         height = len(arr)
     elif len(arr[0]) == 1:
-        flattened = [x for line in arr for x in str(line[0])]
+        flattened = np.array([x for line in arr for x in str(line[0])])
         height = len(arr)
         length = len(arr[0][0])
     else:
-        flattened = [x for line in arr for x in line]
+        flattened = np.array([x for line in arr for x in line])
         length = len(arr[0])
         height = len(arr)
 
@@ -55,7 +55,7 @@ snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> 
             if val == "9":
                 explode(p)
                 continue
-            if flattened.count(val) > 1:
+            if np.count_nonzero(flattened == val) > 1:
                 flattened[index] = "X"
 
     i = 0
@@ -76,13 +76,13 @@ snowman(3, [["0006060066"], ["6900696600"], ["0000990006"], ["6060906606"]]) -> 
         if val == "9":
             explode((i // length, i % length))
             continue
-        if flattened.count(val) > 1:
+        if np.count_nonzero(flattened == val) > 1:
             flattened[i] = "X"
             continue
         break
     
 
-    inside = tuple((flattened.index(item) // length, flattened.index(item) % length) if item in flattened else None for item in ["0", "6"])
+    inside = tuple((np.nonzero(flattened == item)[0][0] // length, np.nonzero(flattened == item)[0][0] % length) if item in flattened else None for item in ["0", "6"])
     # tuple comprehension for the win lmao
     
     flattened = []
